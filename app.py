@@ -11,7 +11,7 @@ from data_processor import load_and_process_data, get_subject_groups
 
 # 获取当前文件目录
 base_dir = os.path.dirname(os.path.abspath(__file__))
-font_path = os.path.join(base_dir, 'fonts', 'SourceHanSansSC-VF.otf')
+font_path = os.path.join(base_dir, 'fonts', 'SourceHanSansSC-Regular.otf')
 
 # 优先使用嵌入字体
 if os.path.exists(font_path):
