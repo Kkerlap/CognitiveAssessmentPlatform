@@ -3,18 +3,34 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import os
+import matplotlib
+import matplotlib.font_manager as fm
 import seaborn as sns
 from data_processor import load_and_process_data, get_subject_groups
 
-matplotlib.rcParams['font.sans-serif'] = [
-    'WenQuanYi Zen Hei',  # Linux 文泉驿
-    'Noto Sans CJK SC',  # Google Noto 中文
-    'Noto Sans CJK JP',  # 备选
-    'SimHei',
-    'Microsoft YaHei',
-    'sans-serif'
-]
-matplotlib.rcParams['axes.unicode_minus'] = False
+# 获取当前文件目录
+base_dir = os.path.dirname(os.path.abspath(__file__))
+font_path = os.path.join(base_dir, 'fonts', 'SourceHanSansSC-VF.otf')
+
+# 优先使用嵌入字体
+if os.path.exists(font_path):
+    fm.fontManager.addfont(font_path)
+    prop = fm.FontProperties(fname=font_path)
+    plt.rcParams['font.family'] = prop.get_name()
+    print(f"Loaded font: {prop.get_name()} from {font_path}")
+else:
+    # 回退到系统字体
+    plt.rcParams['font.sans-serif'] = [
+        'WenQuanYi Zen Hei',
+        'Noto Sans CJK SC',
+        'Noto Sans CJK JP',
+        'SimHei',
+        'Microsoft YaHei',
+        'sans-serif'
+    ]
+
+plt.rcParams['axes.unicode_minus'] = False
 
 st.set_page_config(
     page_title="超文本阅读认知评估可视化系统",
