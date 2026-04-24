@@ -7,6 +7,9 @@ import seaborn as sns
 from data_processor import load_and_process_data, get_subject_groups
 
 matplotlib.rcParams['font.sans-serif'] = [
+    'WenQuanYi Zen Hei',  # Linux 文泉驿
+    'Noto Sans CJK SC',  # Google Noto 中文
+    'Noto Sans CJK JP',  # 备选
     'SimHei',
     'Microsoft YaHei',
     'sans-serif'
